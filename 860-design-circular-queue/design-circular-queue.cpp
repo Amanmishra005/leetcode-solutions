@@ -19,7 +19,7 @@ vector <int> arr;
       if(s==c) return false;
       arr[b] =val;
       b++;
-      if(b==c) b=0;
+      if(b==c) b=0; //makes insertion circular.
       s++;
       return true;
     }
@@ -27,7 +27,7 @@ vector <int> arr;
     bool deQueue() {            //pop front
         if(s==0) return false;
         f++;
-        if(f==c) f=0;
+        if(f==c) f=0;   //makes deletion circular.
         s--;
         return true;
     }
