@@ -10,8 +10,8 @@ public:
     }
     
     int pop() {         //pop i.e fromfront and return it
-        peek();
-        int val = s2.top();
+        peek();             //front element laake diya
+        int val = s2.top(); //ab pop karna h bs 
         s2.pop();
         return val;
     }
