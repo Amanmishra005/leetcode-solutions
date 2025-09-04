@@ -24,6 +24,11 @@ public:
             }
         }
 
-        return r.empty() ? "Dire" : "Radiant";
+       if (r.empty()) {
+    return "Dire";
+} else {
+    return "Radiant";
+}
+
     }
 };
