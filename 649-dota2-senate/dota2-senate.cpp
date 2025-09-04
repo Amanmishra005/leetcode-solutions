@@ -12,8 +12,8 @@ public:
 
         // Simulate rounds
         while (!r.empty() && !d.empty()) {
-            int ri = r.front(); r.pop();
-            int di = d.front(); d.pop();
+            int ri = r.front(); r.pop();    //pehla nikaal ke store kardo R
+            int di = d.front(); d.pop();    //prhla nikaal ke store kardo D
 
             if (ri < di) {
                 // Radiant bans Dire → Radiant gets another chance later
