@@ -1,44 +1,29 @@
 class Solution {
 public:
-    string predictPartyVictory(string s ) {
-        queue<int> q;
-         queue<int> r;
-          queue<int> d;
-        for(int i = 0;i<s.length();i++){
-            q.push(i);
-            if(s[i]=='R') r.push(i);
+    string predictPartyVictory(string senate) {
+        int n = senate.length();
+        queue<int> r, d;
+
+        // Fill initial positions
+        for (int i = 0; i < n; i++) {
+            if (senate[i] == 'R') r.push(i);
             else d.push(i);
         }
-        while(q.size()>1){
-            if(s[q.front()]=='X') q.pop();
-            else if(s[q.front()]=='R'){
-                //check for viictory
-                if(d.size()==0) return "Radiant";
-                else{   //take rights of next D
-                        s[d.front()] ='X';
-                        d.pop();
-                        q.push(q.front());
-                        q.pop();
-                        r.push(r.front());
-                        r.pop();
-                } 
-            }
-             else{ //s[q.front()=='D'
-             //check fro victory
-             if(r.size()==0) return "Dire";
-             else{  //take rights of next R
-             s[r.front()] = 'X';
-             r.pop();
-             //work is done 
-                q.push(q.front());
-                q.pop();
-                d.push(d.front());
-                d.pop();
-             }
 
+        // Simulate rounds
+        while (!r.empty() && !d.empty()) {
+            int ri = r.front(); r.pop();
+            int di = d.front(); d.pop();
+
+            if (ri < di) {
+                // Radiant bans Dire → Radiant gets another chance later
+                r.push(ri + n);
+            } else {
+                // Dire bans Radiant → Dire gets another chance later
+                d.push(di + n);
             }
         }
-        if(s[q.front()]=='R') return "Radiant";
-        else return "Dire";
+
+        return r.empty() ? "Dire" : "Radiant";
     }
 };
