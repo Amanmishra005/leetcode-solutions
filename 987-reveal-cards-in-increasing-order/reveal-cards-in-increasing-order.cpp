@@ -11,7 +11,7 @@ public:
         for(int i=0;i<n;i++){
             int idx = q.front();
             q.pop();
-            q.push(q.front());
+            q.push(q.front());      //push element after the front one 
             q.pop();
             ans[idx]=deck[i];
         }
