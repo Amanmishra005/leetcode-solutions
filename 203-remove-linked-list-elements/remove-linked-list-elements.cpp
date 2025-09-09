@@ -18,7 +18,7 @@ public:
             if(curr->next->val==val){
                 ListNode* temp = curr->next;
                 curr->next = curr->next->next;      //skip
-               // delete temp;    //memory space 
+               delete temp;    //memory space 
             }
             else{
                 curr = curr->next;
