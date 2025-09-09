@@ -24,7 +24,7 @@ public:
                 curr = curr->next;
             }
         }
-        return dummy->next;
+        return dummy->next;     // from head of the node 
                 
     }
         
