@@ -9,18 +9,17 @@ public:
     return false;
     }
     string reverseVowels(string s) {
-      vector<char> vowels;
-      for(char c: s){
+      vector<char> vowels; //useful to apply reverse on the vowels 
+     for(char c:s){         //c collects each char of string s
         if(isVowel(c)) vowels.push_back(c);
-      }
-      reverse(vowels.begin(),vowels.end());
-      string t= "";
-      int idx = 0;
-
-      for(char c:s){
-        if(isVowel(c)) t += vowels[idx++]; //push the sorted vowels in the string t
-        else t +=c;
-      }
-      return t;
+     }
+     reverse(vowels.begin(),vowels.end());
+     string t = "";
+     int idx = 0;
+     for(char c:s){ 
+        if(isVowel(c)) t += vowels[idx++];  //push the sorted vowels in the string t
+        else t += c;
+     }
+     return t;
     }
 };
