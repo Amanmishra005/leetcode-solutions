@@ -17,8 +17,8 @@ public:
 
        if(left!=NULL && right!=NULL) return root;   //one of each p & q present in either left or right
 
-       if(left!=NULL ) return left;
-       else return right;  
+       if(left!=NULL ) return left;//both in left
+       else return right;  //both in right
 
     }
 };
