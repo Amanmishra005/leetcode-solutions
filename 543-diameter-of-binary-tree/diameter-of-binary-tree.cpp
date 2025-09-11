@@ -15,7 +15,7 @@ public:
         if(root==NULL) return 0;
         return 1+ max(levels(root->left) ,levels(root->right));
     }
-    void helper(TreeNode* root, int &maxDia){
+    void helper(TreeNode* root, int &maxDia){ //visits every node to find the longesst path between any two nodes
         if(root==NULL) return;
         int dia = levels(root->left) + levels(root->right);
         maxDia = max(dia,maxDia);
