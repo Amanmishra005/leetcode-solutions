@@ -11,30 +11,24 @@
  */
 class Solution {
 public:
-    int levels(TreeNode* root){
-        if(root==NULL) return 0;
-        return 1+max(levels(root->left),levels(root->right));
-    }
-    void Levelnode(TreeNode* root,int curr,int level,vector<int>& v){
-        if(root==NULL) return;
-        if(curr==level){
-            v.push_back(root->val);
-        } 
-        Levelnode(root->left,curr+1,level,v);
-        Levelnode(root->right,curr+1,level,v);
-    }
-    void lOrder(TreeNode* root,vector<vector<int>>& ans){
-        int n = levels(root);
-        for(int i=1;i<=n;i++){
-            vector<int> v;
-            Levelnode(root,1,i,v);
-            ans.push_back(v);
-            cout<<endl;
-        }
-    }
     vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>> ans;
-        lOrder(root,ans);
+        if(root==NULL) return ans;
+        queue<TreeNode*>q;
+        q.push(root);   //
+        while(!q.empty()){
+            int size = q.size();
+            vector<int> level;  //temporary vector to hold values of nodes at the current level only.
+            for(int i=0;i<size;i++){
+                TreeNode* node = q.front();
+                q.pop();
+                level.push_back(node->val); //level vector mein push
+                
+                if(node->left!=NULL) q.push(node->left);    //
+                if(node->right!=NULL) q.push(node->right);  //
+            }
+            ans.push_back(level);
+        }
         return ans;
     }
 };
