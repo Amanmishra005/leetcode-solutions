@@ -33,8 +33,8 @@ public:
             TreeNode* temp = st.top();
             st.pop();
             ans.push_back(temp->val);
-            //right first for reversal order in the stack
-            if(temp->right!=NULL) st.push(temp->right);
+            //right first then left on pushing in vector root ,left,right i.e preorder 
+            if(temp->right!=NULL) st.push(temp->right); 
             if(temp->left!=NULL) st.push(temp->left);
         }        
         return ans;
