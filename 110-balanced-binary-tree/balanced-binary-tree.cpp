@@ -17,7 +17,7 @@ public:
     }
     bool isBalanced(TreeNode* root) {
         if(root==NULL) return true;
-        int l = levels(root->left);
+        int l = levels(root->left);     //height of left subtree
         int r = levels(root->right);
         if(abs(l-r)>1) return false ;
         return isBalanced(root->left) && isBalanced(root->right);   //ensures the entire tree (all subtrees) satisfies the balance condition, not just the root
