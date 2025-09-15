@@ -17,7 +17,7 @@ int levels(TreeNode* root){
 }
 void preOrder(TreeNode* root,vector<int>& ans,int level){
     if(root==NULL) return;
-    ans[level] =root->val;
+    ans[level] =root->val;      //updating value till last in that level
     preOrder(root->left,ans,level+1);
     preOrder(root->right,ans,level+1);
 }
