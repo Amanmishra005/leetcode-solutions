@@ -15,12 +15,12 @@ void helper(TreeNode* root,vector<int> v,vector<vector<int>>& ans,int sum){
     if(root==NULL) return;
     if(root->left==NULL && root->right==NULL){  //imp
           if(root->val==sum){
-            v.push_back(root->val);
-            ans.push_back(v);
+            v.push_back(root->val);     //leaf node
+            ans.push_back(v);   
           }
           return;
     }
-    v.push_back(root->val);
+    v.push_back(root->val);     //other nodes also
     helper(root->left,v,ans,sum-(root->val));
     helper(root->right,v,ans,sum-(root->val));
     
