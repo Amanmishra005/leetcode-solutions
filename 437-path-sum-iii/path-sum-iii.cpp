@@ -13,9 +13,8 @@ class Solution {
 public:
 void helper(TreeNode* root ,long long sum,int& count){
     if(root==NULL) return;
-    if((long long)root->val==sum){          //if current node equal to sum then we found a path
-        count++;
-    }
+    if((long long)root->val==sum) count++;        //if current node equal to sum then we found a path
+    
     helper(root->left ,sum-(long long)(root->val),count);
     helper(root->right ,sum-(long long)(root->val),count);
     
