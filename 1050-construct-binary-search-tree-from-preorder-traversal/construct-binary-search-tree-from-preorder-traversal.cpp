@@ -1,30 +1,20 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
+//preOrder  = root left right ,so catch the Ist element i.e. root and then traverse the vector and insert left and right according to their values from insert fn .
 class Solution {
 public:
     TreeNode* insert(TreeNode* root,int val){
         if(root==NULL) return new TreeNode(val);
-        if(root->val > val){
+        if(root->val > val){            //less than val on left side
             root->left = insert(root->left,val);
         }
-        else{
+        else{   //root->val < val      ->go right if want more 
             root->right = insert(root->right,val);
         }
         return root;
     }
     TreeNode* bstFromPreorder(vector<int>& pre) {
-        TreeNode* root = new TreeNode(pre[0]);
+        TreeNode* root = new TreeNode(pre[0]);  //Ist element i.e. root of the tree
         for(int i =1;i<pre.size();i++){
-            insert(root,pre[i]);
+            insert(root,pre[i]);        //traverse and insert 
         }
         return root;
     }
