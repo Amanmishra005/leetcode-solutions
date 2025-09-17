@@ -33,7 +33,7 @@ public:
                  //REPLACE the root with its eiher predecessor or successor
             //after replacing delete the predecessor 
                 TreeNode* pred  = iop(root);     //either use iop or ios to catch the node
-                root->val = pred->val;
+                root->val = pred->val;  //keep the value before deletin pred from its origianl location
                 root->left = deleteNode(root->left,pred->val);  //pred -> root left 
             }
         }
