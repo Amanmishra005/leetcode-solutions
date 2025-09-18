@@ -11,22 +11,31 @@
  */
 class Solution {
 public:
-    void preorder(TreeNode* root,vector<TreeNode*>& ans){
-        if(root==NULL) return;
-        ans.push_back(root);
-        preorder(root->left,ans);
-        preorder(root->right,ans);
-    }
     void flatten(TreeNode* root) {
         if(root==NULL) return;
-        vector<TreeNode*> ans;
-        preorder(root,ans);
-        //now connect all the nodes only in right
-        for(int i=0;i<ans.size()-1;i++){
-            ans[i]->left = NULL;   
-            ans[i]->right = ans[i+1];
+        TreeNode* curr = root;
+        while(curr!=NULL){
+            if(curr->left!=NULL){
+                //save right
+                TreeNode* r = curr->right;
+                curr->right = curr->left;
+               
+                //finding predecessor
+                TreeNode* pred = curr->left;
+                while(pred->right!=NULL) pred = pred->right;
+                //linking 
+                pred->right = r;
+                curr = curr->left;
+            }
+            else{
+                curr = curr->right;
+            }
+        }
+        TreeNode* temp = root;
+        while(temp->right!=NULL){
+            temp->left = NULL;
+            temp = temp->right;
         }
 
-        
     }
 };
