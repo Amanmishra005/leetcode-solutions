@@ -21,8 +21,9 @@ public:
         if(root==NULL) return;
         vector<TreeNode*> ans;
         preorder(root,ans);
+        //now connect all the nodes only in right
         for(int i=0;i<ans.size()-1;i++){
-            ans[i]->left = NULL;
+            ans[i]->left = NULL;   
             ans[i]->right = ans[i+1];
         }
 
