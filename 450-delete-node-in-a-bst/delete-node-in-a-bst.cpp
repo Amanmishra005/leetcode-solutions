@@ -11,29 +11,33 @@
  */
 class Solution {
 public:
-    TreeNode* ios(TreeNode* root){
-        TreeNode* sucess = root->right;
-        while(sucess->left!=NULL){
-            sucess = sucess->left;
+    TreeNode* iop(TreeNode* root){
+        TreeNode* pred = root->left;
+        while(pred->right!=NULL){
+            pred = pred->right;
         }
-        return sucess;
+        return pred;
     }
     TreeNode* deleteNode(TreeNode* root, int key) {
-        if(root==NULL) return root;
-        if(root->val==key){
+        if(root==NULL) return NULL;
+        if(root->val == key){   //node to be deleted found
+            //case 1: no child
             if(root->left==NULL && root->right==NULL) return NULL;
+            //case2: 1 child node
             if(root->left==NULL || root->right==NULL){
                 if(root->left!=NULL) return root->left;
                 else return root->right;
             }
+              ////case3: 2 child Nodes
             if(root->left!=NULL && root->right!=NULL){
-                TreeNode* sucess = ios(root);
-                root->val = sucess->val;
-                root->right = deleteNode(root->right,sucess->val);
+                 //REPLACE the root with its eiher predecessor or successor
+            //after replacing delete the predecessor 
+                TreeNode* pred  = iop(root);     //either use iop or ios to catch the node
+                root->val = pred->val;  //keep the value before deletin pred from its origianl location
+                root->left = deleteNode(root->left,pred->val);  //pred -> root left 
             }
-            
         }
-        if(root->val > key){
+        else if(root->val > key){
             root->left = deleteNode(root->left,key);
         }
         else{
