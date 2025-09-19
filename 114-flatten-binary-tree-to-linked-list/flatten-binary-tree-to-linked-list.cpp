@@ -18,7 +18,7 @@ public:
             if(curr->left!=NULL){
                 //save right
                 TreeNode* r = curr->right;
-                curr->right = curr->left;
+                curr->right = curr->left; 
                
                 //finding predecessor
                 TreeNode* pred = curr->left;
@@ -31,6 +31,7 @@ public:
                 curr = curr->right;
             }
         }
+        //connecting nodes 
         TreeNode* temp = root;
         while(temp->right!=NULL){
             temp->left = NULL;
