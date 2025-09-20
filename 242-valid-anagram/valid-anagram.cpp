@@ -9,13 +9,10 @@ public:
        }
        for(int i=0;i<t.length();i++){
         char ch = t[i];
-        if(map1.find(ch)!=map1.end()){  //find ch of string t in string of string s
-              map1[ch]--;               //found then remove char of string s in map1
-            if(map1[ch]==0) map1.erase(ch); //char[s]  = char  [t] then delete 
+        if(map1.find(ch)==map1.end()) return false;//if ch of string t not found in map s 
+              map1[ch]--;     //if found then remove           
+            if(map1[ch]==0) map1.erase(ch);
         }
-            else return false;
-        }
-        if(map1.size()>0) return false;     //distinct  map2 so no anagram
         return true;
        }
        
