@@ -10,7 +10,7 @@ public:
                 result.push_back(m[rem]);
                 result.push_back(i);    //index's value + rem = tareget
             }
-            else m[nums[i]] = i;
+            else m[nums[i]] = i;    //for further use stored
         }
         return result;
     }
