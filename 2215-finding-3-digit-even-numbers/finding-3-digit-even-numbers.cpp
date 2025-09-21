@@ -10,7 +10,7 @@ public:
         for(int i=100;i<=999;i+=2){
             int x = i;         //store the number to be checked in x so that original num can later be pushed
             int a = x%10;   //ones place digit
-            x /=10;
+            x /=10;         //remove last digit and store rest
             int b = x%10;    //tens place digit
             x /=10;
             int c = x;  //
