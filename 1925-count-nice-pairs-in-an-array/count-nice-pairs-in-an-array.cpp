@@ -14,10 +14,10 @@ int reverse(int n){
         int count = 0;
         unordered_map<int,int> m;
         for(int i=0;i<n;i++){
-            nums[i] -= reverse(nums[i]);
+            nums[i] -= reverse(nums[i]); 
         }
         for(int i=0;i<n;i++){
-            if(m.find(nums[i])!=m.end()){
+            if(m.find(nums[i])!=m.end()){   //pairs present 
                 count = count % 1000000007; //handles large output given condition 
                 count += m[nums[i]];
                 m[nums[i]]++;
