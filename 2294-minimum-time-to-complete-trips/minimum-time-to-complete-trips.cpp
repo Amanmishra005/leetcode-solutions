@@ -16,16 +16,16 @@ public:
             if(max < time[i]) max = time[i];
         }
         long long lo =1;
-        long long hi = (long long)max * (long long)totalTrips;
+        long long hi = (long long)max * (long long)totalTrips;  //cant't go out of it 
         long long ans = -1;
         while(lo<=hi){
             long long mid = lo + (hi-lo)/2;
             if(check(mid,time,totalTrips)==true){
-               ans =mid;
+               ans =mid;        //time taken to complete the totalTrips 
                hi = mid-1; 
             }
             else lo = mid+1;
         }
-        return ans;     //time taken to complete the totalTrips 
+        return ans;     //minimum time taken to complete the totalTrips 
     }
 };
