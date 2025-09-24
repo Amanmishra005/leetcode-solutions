@@ -1,8 +1,8 @@
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& arr) {
-     vector<vector<string>> ans;
-     unordered_map<string,vector<string>> mp;
+     vector<vector<string>> ans;    //store the final ans
+     unordered_map<string,vector<string>> mp;   //for grouping anagrams 
      for( auto str: arr){
         string lex = str;
         sort(lex.begin(),lex.end());
