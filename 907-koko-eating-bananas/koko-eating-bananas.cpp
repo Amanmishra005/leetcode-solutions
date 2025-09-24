@@ -29,6 +29,6 @@ public:
             }
             else lo = mid+1;
         }
-        return ans;         //the min speed by which banana can be eaten in a given time h
+        return ans;         //the optimal minspeed by which banana can be eaten in a given time h
     }
 };
