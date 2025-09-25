@@ -27,7 +27,7 @@ public:
         }
         int lo = max;
         int hi = sum;
-        int minCapacity =  sum;
+        int minCapacity =  -1;
         while(lo<=hi){
             int mid = lo + (hi-lo)/2;
             if(check(mid,weights,days)){    //default true else false 
