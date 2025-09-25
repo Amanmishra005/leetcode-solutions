@@ -2,7 +2,7 @@ class Solution {
 public:
     bool check(int mid,vector<int>& weights,int days){
         int n = weights.size();
-        int m = mid;            //max capacity 
+        int m = mid;            //max capacity it can hold in single day 
         int count = 1;          //days we are counting on the basis of mid taken 
         for(int i=0;i<n;i++){
             if(m>=weights[i]){
