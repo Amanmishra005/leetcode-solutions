@@ -10,33 +10,19 @@
  */
 class Solution {
 public:
-ListNode* reverseList(ListNode* head){
-    if(head ==NULL || head->next == NULL) return head;
-    ListNode* newHead = reverseList(head->next);
+ListNode* left;
+    bool checkPal(ListNode* right){
+        if(right==NULL) return true;
+            bool isPal = checkPal(right->next);     //now right is at the tail posi through deep recursion
 
-    head->next->next =  head;
-    head->next = NULL;
-    return newHead;
-}
-    bool isPalindrome(ListNode* head) {
-        //if the first half and second half are reverse of each other
-        //then it is a palindrome 
-        ListNode* slow = head;
-        ListNode* fast = head;
-        while(fast->next!=NULL  && fast->next->next!=NULL){
-            slow = slow->next;
-            fast = fast->next->next;
+        if(isPal==false) return false;          
+        if(left->val!=right->val) return false;
 
-        }
-        //slow is at the left middle//middle 
-        ListNode* newHead = reverseList(slow->next);
-        ListNode* a = head;
-        ListNode* b =newHead;
-        while(b){
-            if(a->val != b->val) return false;
-            a = a->next;
-            b = b->next;
-        }
+        left = left->next;
         return true;
+    }
+    bool isPalindrome(ListNode* head) {
+      left = head;
+      return checkPal(head);
     }
 };
