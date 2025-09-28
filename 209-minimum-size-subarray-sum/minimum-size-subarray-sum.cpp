@@ -12,12 +12,12 @@ public:
             while(sum>=target){
                 len = j-i+1;
                 minLen = min(minLen,len);
-                sum -=nums[i];
+                sum -=nums[i];  //shrink window from left to chek for others
                 i++;
             }
             j++;
         }
-        if (minLen==INT_MAX) return 0;
-        return minLen;
+        if (minLen==INT_MAX) return 0;  //if any valid subarray not found then return 
+        return minLen;                  
     }
 };
