@@ -15,11 +15,13 @@ public:
             j = n-1;
         }
         int winSum = 0;
-        for(int idx = i;idx<=j;idx++){
+        //sum of the current window
+        for(int idx = i;idx<=j;idx++){ 
             winSum += code[idx];
         }
+        
         for(int k=0;k<n;k++){
-            ans[k]  =winSum;        //entered first window sum
+            ans[k]  =winSum;      // store current sum   
             winSum -= code[i % n];      //window leaving elemen
             i++;
             winSum += code[(j+1) % n];  //new ele
