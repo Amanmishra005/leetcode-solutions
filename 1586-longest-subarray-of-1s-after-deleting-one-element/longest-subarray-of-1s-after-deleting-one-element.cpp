@@ -4,18 +4,16 @@ public:
         int n = nums.size();
         int i = 0;            // start of window
         int zeroCount = 0;    // how many zeros in current window
-        int maxLen = 0;       // result
+        int maxLen = 0;      
 
-        for (int j = 0; j < n; j++) { // j = end of window
+        for (int j = 0; j < n; j++) { 
             if (nums[j] == 0) zeroCount++; // add nums[j] into window
 
-            // shrink window if too many zeros
+           //if more than one zero in the window then remove 
             while (zeroCount > 1) {
-                if (nums[i] == 0) --zeroCount; // removing a zero → decrease count
-                i++; // move start forward
+                if (nums[i] == 0) --zeroCount; // removing a zero → decrease count 
+                i++; // shift
             }
-
-            // j - i = window_size - 1 (because we must delete one element)
             maxLen = max(maxLen, j - i);
         }
 
