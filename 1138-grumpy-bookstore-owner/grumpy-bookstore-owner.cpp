@@ -15,7 +15,7 @@ public:
         int i = 1, j = k;
 
         while (j < n) {
-            // int currLoss = prevLoss;
+            //
 
             if (grumpy[j] == 1) prevLoss += customers[j];
             if (grumpy[i - 1] == 1) prevLoss -= customers[i - 1];
@@ -23,13 +23,11 @@ public:
             if (prevLoss > maxLoss) {
                 maxLoss = prevLoss;
                 maxIdx = i;
-            }
-
-            
+            }            
             i++;
             j++;
         }
-        // Suppress grumpiness in best window
+        // remove grumpiness in best window
         for (int i = maxIdx; i < maxIdx + k && i < n; i++) {
             grumpy[i] = 0;  //become non-grumpy -> max customers
         }
