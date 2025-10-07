@@ -12,7 +12,6 @@ public:
         vector <string> result(n);
         int rank = 1;
         while(!max.empty()){
-            int val = max.top().first;
             int index = max.top().second;
             max.pop();
             if(rank ==1) result[index] = "Gold Medal";
