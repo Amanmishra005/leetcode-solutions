@@ -8,8 +8,8 @@ public:
             int mid = (hi+lo)/2;
             if(arr[mid]==target) return mid;
             else if(arr[mid]>target) hi = mid-1;
-            else lo= mid+1;
+            else lo = mid+1;
         }
-        return lo;  //insert here
+        return lo;  
     }
 };
