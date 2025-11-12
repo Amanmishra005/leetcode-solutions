@@ -8,8 +8,8 @@ public:
         while(lo<=hi){
             int mid =  lo + (hi-lo)/2;
             if(nums[mid]==target){
-                first = mid;
-                hi = mid-1;
+                first = mid;            //store the first occur
+                hi = mid-1;             //search for the first occur if exist 
             }else if(nums[mid] < target) lo = mid+1;
             else hi = mid-1;
         }
@@ -18,11 +18,11 @@ public:
             int mid =  lo + (hi-lo)/2;
             if(nums[mid]==target){
                 last = mid;
-                lo = mid+1;
+                lo = mid+1;              //search for the last occur if exist on the right side  
             }else if(nums[mid] < target) lo = mid+1;
             else hi = mid-1;
         }
-        return{first,last};
+        return{first,last};     //vector containing first and last occurence 
 
     }
 };
