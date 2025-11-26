@@ -5,7 +5,7 @@ public:
 
     }
     
-    void push(int x) {  //pushback
+    void push(int x) {  
         s1.push(x);
     }
     
