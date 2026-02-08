@@ -11,15 +11,16 @@
  */
 class Solution {
 public:
-    int levels(TreeNode* root){
+    int level(TreeNode* root){
         if(root==NULL) return 0;
-        return 1+ max(levels(root->left),levels(root->right));  //max depth
+        return 1 + max(level(root->left),level(root->right));
     }
+    
     bool isBalanced(TreeNode* root) {
-        if(root==NULL) return true;
-        int l = levels(root->left);     //height of left subtree
-        int r = levels(root->right);
-        if(abs(l-r)>1) return false ;
-        return isBalanced(root->left) && isBalanced(root->right);   //ensures the entire tree (all subtrees) satisfies the balance condition, not just the root
+      if(root==NULL) return true;
+      int left = level(root->left);
+      int right = level(root->right);
+      if(abs(right-left)>1) return false;
+      return isBalanced(root->left) && isBalanced(root->right);
     }
 };
