@@ -2,7 +2,7 @@ class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
         stack<int> st;
-        for(string &c : tokens){
+        for(string c : tokens){
             if(c== "+"){
                 int a = st.top(); st.pop();
                 int b = st.top(); st.pop();
