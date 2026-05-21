@@ -11,15 +11,14 @@
  */
 class Solution {
 public:
-
     TreeNode* invertTree(TreeNode* root) {
-          if(root==NULL) return NULL;
-    TreeNode* temp = root->left;
-    root->left = root->right;
-    root->right = temp;
-    //for inverting each node use recursion
-    invertTree(root->left);
-    invertTree(root->right);
-    return root;
+        if(root==NULL) return root;
+        TreeNode* temp = root->left;
+        root->left = root->right;
+        root->right = temp;
+        invertTree(root->left);
+        invertTree(root->right);
+        return root;
     }
+    
 };
