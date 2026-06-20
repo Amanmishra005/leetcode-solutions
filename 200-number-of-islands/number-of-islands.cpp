@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void bfs(int row, int col,
+    void dfs(int row, int col,
              vector<vector<int>>& vis,
              vector<vector<char>>& grid) {
 
@@ -14,10 +14,7 @@ public:
         int delrow[] = {-1,0,1,0};
         int delcol[] = {0,1,0,-1};
 
-        while(!q.empty()) {
-            int row = q.front().first;
-            int col = q.front().second;
-            q.pop();
+     
 
             for(int i=0;i<4;i++) {
                 int nrow = row + delrow[i];
@@ -28,11 +25,10 @@ public:
                    grid[nrow][ncol]=='1' &&
                    !vis[nrow][ncol]) {
 
-                    vis[nrow][ncol] = 1;
-                    q.push({nrow,ncol});
+                  dfs(nrow,ncol,vis,grid);
                 }
             }
-        }
+        
     }
 
     int numIslands(vector<vector<char>>& grid) {
@@ -48,7 +44,7 @@ public:
 
                 if(!vis[row][col] && grid[row][col]=='1') {
                     cnt++;
-                    bfs(row,col,vis,grid);
+                    dfs(row,col,vis,grid);
                 }
             }
         }
