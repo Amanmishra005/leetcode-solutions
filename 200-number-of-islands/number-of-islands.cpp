@@ -7,8 +7,7 @@ public:
         int m = grid.size();
         int n = grid[0].size();
 
-        queue<pair<int,int>> q;
-        q.push({row,col});
+        
         vis[row][col] = 1;
 
         int delrow[] = {-1,0,1,0};
