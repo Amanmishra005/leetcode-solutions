@@ -11,29 +11,20 @@
  */
 class Solution {
 public:
-    int preorderIndex = 0;
-    TreeNode* build(vector<int>& preorder,vector<int>& inorder,int left,int right){
-        if(left>right) return NULL;
-        //root from preorder
-        int rootval = preorder[preorderIndex++];
-        TreeNode* root = new TreeNode(rootval);
-        //root from inorder apply linear search
-        int mid = -1;
-        for(int i=left;i<=right;i++){
-            if(inorder[i] == rootval){
-                mid = i;
-                break;
-            }
+    int preIdx = 0;
+    int inIdx = 0;
+    TreeNode* dfs(vector<int>& preorder , vector<int>& inorder , int limit){
+        if(preIdx >= preorder.size()) return NULL;
+        if(limit == inorder[inIdx]){
+            inIdx++;
+            return NULL;
         }
-        //use recursion to build left right subtree
-        root->left = build(preorder,inorder,left,mid-1);
-        root->right = build(preorder,inorder,mid+1,right);
+        TreeNode* root = new TreeNode(preorder[preIdx++]);
+        root->left = dfs(preorder , inorder , root->val);
+        root->right = dfs(preorder , inorder , limit);
         return root;
-
     }
-     TreeNode* buildTree(vector<int>& preorder,vector<int>& inorder){
-        int n = inorder.size()-1;
-        return build(preorder,inorder,0,n);
-     }
-   
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        return dfs(preorder , inorder , INT_MAX);
+    }
 };
