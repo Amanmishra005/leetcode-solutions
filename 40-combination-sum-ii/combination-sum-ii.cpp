@@ -7,14 +7,14 @@ public:
             return;
         }
         if(idx==candidates.size() || target <0) return;
-         for(int i = idx ; i<candidates.size();i++){
-            if(i > idx && candidates[i]==candidates[i-1]){
-                continue;
-            }
-             comb.push_back(candidates[i]);
-        combinationII(candidates ,  i +1 , target-candidates[i], ans , comb);
+         comb.push_back(candidates[idx]);
+        combinationII(candidates ,  idx +1 , target-candidates[idx], ans , comb);
         comb.pop_back();
-         }
+        int next  = idx + 1;
+        while(next < candidates.size() && candidates[next]==candidates[next-1]){
+            next++;
+        }
+        combinationII(candidates , next , target , ans, comb);
        
     }
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
