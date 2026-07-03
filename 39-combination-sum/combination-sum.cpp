@@ -1,21 +1,26 @@
 class Solution {
 public:
-    void combination(vector<vector<int>>& ans,vector<int> v,vector<int>& candidates,int target,int idx){
-        if(target==0){
-            ans.push_back(v);
-            return;
+set<vector<int>> s;
+void combinationSum(vector<int>& candidates , int idx, int target , vector<vector<int>>& ans , vector<int>& comb){
+    if(idx == candidates.size() || target <0) return;
+    if(target==0){
+        if(s.find(comb) == s.end()){
+            ans.push_back(comb);
+            s.insert(comb);
+            
         }
-        if(target<0) return;
-        for(int i=idx;i<candidates.size();i++){     //target>0
-            v.push_back(candidates[i]);     //storing current ele we'r traversing in vector candidates
-            combination(ans,v,candidates,target-candidates[i],i);
-            v.pop_back();
-        }
+        return;
     }
+    comb.push_back(candidates[idx]);
+    combinationSum(candidates , idx+1 , target - candidates[idx], ans,comb); //single time do
+    combinationSum(candidates , idx , target - candidates[idx] , ans , comb); //multiple time so idx only 
+    comb.pop_back(); //dont include
+    combinationSum(candidates , idx +1 ,target , ans , comb);
+}
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         vector<vector<int>> ans;
-        vector<int>  v;
-        combination(ans,v,candidates,target,0);
+        vector<int> comb;
+        combinationSum(candidates , 0 , target , ans , comb);
         return ans;
     }
 };
