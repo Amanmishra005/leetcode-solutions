@@ -8,7 +8,7 @@ public:
             int node  = q.front();
             q.pop();
             for(int i  = 0 ;i<isConnected.size();i++){
-                if(!vis[i] && isConnected[currnode][i]==1){
+                if(!vis[i] && isConnected[node][i]==1){
                     bfs(i , isConnected , vis);
                 }
             }
