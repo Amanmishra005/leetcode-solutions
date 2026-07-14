@@ -4,6 +4,7 @@ public:
        
          queue<int> q;
         q.push(currnode);
+        vis[currnode] = true;
         while(!q.empty()){
             int node  = q.front();
             q.pop();
