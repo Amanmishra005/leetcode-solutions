@@ -1,7 +1,7 @@
 class Solution {
 public:
     void bfs(int currnode , vector<vector<int>>& isConnected  , vector<bool>& vis){
-        vis[currnode] = true;
+       
          queue<int> q;
         q.push(currnode);
         while(!q.empty()){
@@ -9,7 +9,8 @@ public:
             q.pop();
             for(int i  = 0 ;i<isConnected.size();i++){
                 if(!vis[i] && isConnected[node][i]==1){
-                    bfs(i , isConnected , vis);
+                    vis[i] = true;
+                    q.push(i);
                 }
             }
         }
