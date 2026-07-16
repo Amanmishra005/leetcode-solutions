@@ -27,23 +27,23 @@ public:
             parent[i] = i;
             rank[i] = 1;
         }
-        for(auto &it : edges){
-            int u = it[0];
-            int v = it[1];
-            Union(u,v);
-        }
-        unordered_map<int , int> mp;
-        for(int i=0;i<n;i++){
-            int leader = find(i);
-            mp[leader]++;
-        }
-        long long result = 0;
-        long long remainingnodes = n;
-        for(auto &m : mp){
-            long long size =  m.second;
-            result += size * (remainingnodes - size);
-            remainingnodes -= size;
-        }
-        return result;
+       for(auto &node : edges){
+        int u = node[0];
+        int v  =node[1];
+        Union(u,v);                 //make components
+       }
+       unordered_map<int,int> mp;
+       for(int i=0;i<n;i++){
+        int leader = find(i);       //find leader of each node and map components size
+        mp[leader]++;
+       }
+       long long result = 0;
+       long long remainnodes = n;
+       for(auto &m : mp){
+        long long size = m.second;
+        result += size * (remainnodes -size);
+        remainnodes -= size;
+       }
+       return result;
     }
 };
