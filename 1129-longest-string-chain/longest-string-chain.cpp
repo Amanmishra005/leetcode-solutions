@@ -1,39 +1,32 @@
 class Solution {
 public:
-    int  n;
-    int dp[1001][1001];
-    bool ispred(string& prev , string& curr){
-        int M = prev.length();
-        int N = curr.length();
-        if(M >= N || N-M!=1) return false;
-        int i = 0, j = 0;
-        while(i<M && j <N){
-            if(prev[i] == curr[j]) i++;
-            j++;
-        }
-        return i==M;
+bool ispred(string& word1 , string word2){
+    int M = word1.size();
+    int N = word2.size();
+    if(M >= N || N-M!=1) return false;
+    int i = 0 , j = 0;
+    while(i<M && j<N){
+        if(word1[i]==word2[j]) i++;
+        j++;
     }
-    int lis(vector<string>& words , int prevele , int currele){
-        if(currele>=n) return 0;
-        int take  = 0;
-        if(prevele!= -1 && dp[prevele][currele]!=-1) return dp[prevele][currele];
-        if(prevele==-1 || ispred(words[prevele],words[currele])){
-            take = 1 + lis(words , currele , currele + 1);
-        }
-        int skip = lis(words , prevele , currele +1 );
-        if(prevele != -1){
-            dp[prevele][currele] = max(take , skip);
-        }
-        
-        return max(take , skip);
-    }
-    static bool onlength(string& word1 , string& word2){        //static since comparator requirement on sort 
-        return word1.length() < word2.length();
-    }
+    return i==M;
+}
+static bool onlength(string& word1 , string& word2){
+    return word1.length() < word2.length();
+}
     int longestStrChain(vector<string>& words) {
-        n = words.size();
-        memset(dp , -1 , sizeof(dp));
+        int n = words.size();
         sort(words.begin(),words.end() , onlength);
-        return lis(words , -1 , 0);
+        vector<int> dp(n , 1);
+        int longchain = 1;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<i;j++){
+                if(ispred(words[j] , words[i])){
+                     dp[i] = max(dp[i] , dp[j] +1);
+                }
+                longchain = max(longchain , dp[i]);
+            }
+        }
+        return longchain;
     }
 };
