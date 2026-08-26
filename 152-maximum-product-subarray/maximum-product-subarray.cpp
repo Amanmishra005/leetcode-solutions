@@ -8,7 +8,7 @@ public:
         //calculate and compare left,right,result;
         for(int i=0;i<n;i++){
             if(leftprod==0){
-                leftprod = 1;
+                leftprod = 1; // reset the subarray chain
             }
             if(rightprod==0){
                 rightprod = 1;
